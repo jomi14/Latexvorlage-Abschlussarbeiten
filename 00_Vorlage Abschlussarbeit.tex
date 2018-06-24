@@ -1,0 +1,122 @@
+%Dokumentklasse
+\documentclass[a4paper,12pt]{scrreprt}
+\usepackage[left= 3cm,right = 2cm, bottom = 2.5 cm, top = 2.5 cm]{geometry}
+%\usepackage[onehalfspacing]{setspace}
+% ============= Packages =============
+
+% Dokumentinformationen
+\usepackage[
+	pdftitle={Titel der Abschlussarbeit},
+	pdfsubject={},
+	pdfauthor={Euer Name},
+	pdfkeywords={},	
+	%Links nicht einrahmen
+	hidelinks
+]{hyperref}
+
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, subfig}
+\graphicspath{{img/}}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{siunitx}
+\usepackage{subfigure}
+\usepackage{acronym}
+\usepackage{setspace} 
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{pdfpages}
+
+% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+%nicht einrücken nach Absatz
+%\setlength{\parindent}{0pt}
+
+
+% ============= Kopf- und Fußzeile =============
+\pagestyle{fancy}
+%
+\lhead{}
+\chead{}
+\rhead{\slshape \leftmark}
+%%
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+%%
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+% ============= Package Einstellungen & Sonstiges ============= 
+%Besondere Trennungen
+\hyphenation{De-zi-mal-tren-nung}
+
+
+% ============= Dokumentbeginn =============
+
+\begin{document}
+%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
+\pagestyle{empty}
+
+\include{01_titel}
+\pagenumbering{gobble}
+
+\includepdf{AufgabenstellungHS.pdf}
+
+%\include{03_zusammenfassung}
+
+% Beendet eine Seite und erzwingt auf den nachfolgenden Seiten die Ausgabe aller Gleitobjekte (z.B. Abbildungen), die bislang definiert, aber noch nicht ausgegeben wurden. Dieser Befehl fügt, falls nötig, eine leere Seite ein, sodaß die nächste Seite nach den Gleitobjekten eine ungerade Seitennummer hat. 
+\cleardoubleoddpage
+
+% pagestyle für gesamtes Dokument aktivieren
+\pagestyle{headings}
+
+%Inhaltsverzeichnis
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%Verzeichnis aller Bilder
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+\include{02_abkuerzungen}
+
+%Verzeichnis aller Tabellen
+\listoftables
+
+
+\pagestyle{headings}
+
+\include{04_einleitung}
+
+\include{05_grundlagen}
+
+\include{06_standdertechnik}
+
+\include{07_methoden}
+
+\include{08_ergebnisse}
+
+\include{09_diskussion}
+
+%Literaturverzeichnis
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliographystyle{abbrvdin}
+\bibliography{Literatur}
+\nocite{*}
+
+
+
+\end{document}
